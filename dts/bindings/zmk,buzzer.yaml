@@ -1,0 +1,32 @@
+description: |
+  Passive buzzer driven by a PWM channel, with melodies as child nodes.
+  Melodies are numbered in the order they are defined, starting at 0.
+
+compatible: "zmk,buzzer"
+
+properties:
+  pwms:
+    type: phandle-array
+    required: true
+    description: |
+      PWM channel driving the buzzer. The period cell is only a placeholder,
+      each note sets its own, e.g. <&pwm0 0 PWM_HZ(1000) PWM_POLARITY_NORMAL>.
+
+  duty-percent:
+    type: int
+    default: 50
+    description: |
+      Duty cycle of each note. 50 is loudest; lower values are quieter and
+      thinner.
+
+child-binding:
+  description: A melody
+  properties:
+    notes:
+      type: array
+      required: true
+      description: |
+        Pairs of frequency (Hz) and duration (ms), e.g.
+        <NOTE_C6 80 NOTE_REST 40 NOTE_G6 120> using the macros from
+        <dt-bindings/zmk/buzzer.h>. A frequency of 0 (NOTE_REST) is silence.
+        The buzzer is always silent once the melody ends.

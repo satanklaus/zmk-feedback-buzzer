@@ -1,0 +1,10 @@
+pwm: channel 0 period 1000 us pulse 0 us
+buzzer: melody 1 start
+pwm: channel 0 period 955 us pulse 477 us
+buzzer: note 1047 Hz for 40 ms
+pwm: channel 0 period 1000 us pulse 0 us
+buzzer: rest for 30 ms
+pwm: channel 0 period 637 us pulse 318 us
+buzzer: note 1568 Hz for 60 ms
+pwm: channel 0 period 1000 us pulse 0 us
+buzzer: melody done

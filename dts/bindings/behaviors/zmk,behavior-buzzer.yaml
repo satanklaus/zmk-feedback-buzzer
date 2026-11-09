@@ -1,0 +1,13 @@
+description: |
+  Buzzer behavior: plays a melody of a zmk,buzzer on key press. The parameter
+  is the melody number.
+
+compatible: "zmk,behavior-buzzer"
+
+include: one_param.yaml
+
+properties:
+  buzzer:
+    type: phandle
+    required: true
+    description: The zmk,buzzer to play on

@@ -1,0 +1,15 @@
+description: |
+  Test-only PWM controller for native_sim: logs every period/pulse it is given
+  (1 cycle = 1 us). Not for real hardware.
+
+compatible: "zmk,buzzer-test-pwm"
+
+include: [pwm-controller.yaml, base.yaml]
+
+properties:
+  "#pwm-cells":
+    const: 2
+
+pwm-cells:
+  - channel
+  - period

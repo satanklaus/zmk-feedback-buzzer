@@ -1,0 +1,16 @@
+#include "../behavior_keymap.dtsi"
+
+/ {
+    buzzer_triggers {
+        compatible = "zmk,buzzer-triggers";
+
+        layer_1 {
+            layer = <1>;
+            on = <&one>;
+            off = <&two>;
+        };
+    };
+};
+&kscan {
+    events = <ZMK_MOCK_PRESS(1,0,200) ZMK_MOCK_PRESS(1,1,10) ZMK_MOCK_RELEASE(1,1,10) ZMK_MOCK_RELEASE(1,0,300)>;
+};

@@ -1,0 +1,3 @@
+s/.*buzzer_step: /buzzer: /p
+s/.*hid_listener_keycode_//p
+s/.*test_pwm_set_cycles: /pwm: /p

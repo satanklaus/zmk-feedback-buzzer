@@ -1,0 +1,37 @@
+description: |
+  Plays buzzer melodies on keyboard events. Each sound is a phandle to a
+  melody node of a zmk,buzzer; leave a property out for no sound. At most one
+  instance.
+
+compatible: "zmk,buzzer-triggers"
+
+properties:
+  startup:
+    type: phandle
+    description: Played once at boot
+
+  usb-connected:
+    type: phandle
+    description: |
+      Played when a USB host enumerates the keyboard. When startup is set, the
+      first connection after boot plays nothing, so the two don't clash.
+
+  usb-disconnected:
+    type: phandle
+    description: Played when the USB host goes away
+
+child-binding:
+  description: Sounds for one layer
+  properties:
+    layer:
+      type: int
+      required: true
+      description: Layer index
+
+    "on":
+      type: phandle
+      description: Played when the layer turns on
+
+    "off":
+      type: phandle
+      description: Played when the layer turns off

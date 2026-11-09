@@ -1,0 +1,11 @@
+#include "../behavior_keymap.dtsi"
+
+/ {
+    buzzer_triggers {
+        compatible = "zmk,buzzer-triggers";
+        startup = <&chime>;
+    };
+};
+&kscan {
+    events = <ZMK_MOCK_PRESS(1,1,300) ZMK_MOCK_RELEASE(1,1,10)>;
+};

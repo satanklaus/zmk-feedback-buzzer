@@ -1,0 +1,10 @@
+pwm: channel 0 period 1000 us pulse 0 us
+buzzer: melody 2 start
+pwm: channel 0 period 1912 us pulse 956 us
+buzzer: note 523 Hz for 30 ms
+pwm: channel 0 period 1517 us pulse 758 us
+buzzer: note 659 Hz for 30 ms
+pwm: channel 0 period 1000 us pulse 0 us
+buzzer: melody done
+pressed: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+released: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00

@@ -1,0 +1,46 @@
+#include <dt-bindings/zmk/keys.h>
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/kscan_mock.h>
+#include <dt-bindings/pwm/pwm.h>
+#include <dt-bindings/zmk/buzzer.h>
+
+/ {
+    test_pwm: test_pwm {
+        compatible = "zmk,buzzer-test-pwm";
+        #pwm-cells = <2>;
+    };
+
+    buzzer: buzzer {
+        compatible = "zmk,buzzer";
+        pwms = <&test_pwm 0 PWM_HZ(1000)>;
+
+        one: one { notes = <NOTE_A5 50>; };
+        /* Two notes with a rest between */
+        two: two { notes = <NOTE_C6 40 NOTE_REST 30 NOTE_G6 60>; };
+        chime: chime { notes = <NOTE_C5 30 NOTE_E5 30>; };
+    };
+
+    behaviors {
+        beep: buzzer {
+            compatible = "zmk,behavior-buzzer";
+            #binding-cells = <1>;
+            buzzer = <&buzzer>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+                &beep 0  &beep 1
+                &mo 1    &kp A>;
+        };
+
+        layer_1 {
+            bindings = <
+                &trans  &trans
+                &trans  &kp B>;
+        };
+    };
+};
